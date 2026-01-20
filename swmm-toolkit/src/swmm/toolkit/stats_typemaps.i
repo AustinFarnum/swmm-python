@@ -83,6 +83,10 @@
     SM_SubcatchStats *subcatchStats
 }
 
+%statsmaps(SM_GWaterState);
+%apply SM_GWaterState *out_stats {
+    SM_GWaterState *gWaterState
+}
 
 %statsmaps(SM_RoutingTotals);
 %apply SM_RoutingTotals *out_stats {
