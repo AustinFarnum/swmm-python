@@ -84,6 +84,7 @@
 %rename(subcatch_get_stats)                 swmm_getSubcatchStats;
 
 %rename(gw_get_state)                       swmm_getGWaterState;
+%rename(gw_set_state)                       swmm_setGWaterState;
 
 
 %rename(system_get_routing_totals)          swmm_getSystemRoutingTotals;
