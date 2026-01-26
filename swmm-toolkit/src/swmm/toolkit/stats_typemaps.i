@@ -83,6 +83,10 @@
     SM_SubcatchStats *subcatchStats
 }
 
+%statsmaps(SM_GWaterState);
+%apply SM_GWaterState *out_stats {
+    SM_GWaterState *gWaterState
+}
 
 %statsmaps(SM_RoutingTotals);
 %apply SM_RoutingTotals *out_stats {
@@ -95,6 +99,24 @@
     SM_RunoffTotals *runoffTotals
 }
 
+/* Added so four item python list can be passed into the solver as double x[4] */
+%typemap(in) double x[4] (double temp[4]) {
+  if (PyList_Check($input)) {
+    if (PyList_Size($input) == 4) {
+      int i;
+      for (i = 0; i < 4; i++) {
+        temp[i] = PyFloat_AsDouble(PyList_GetItem($input, i));
+      }
+      $1 = temp;
+    } else {
+      PyErr_SetString(PyExc_TypeError, "Input list must have 4 elements.");
+      return NULL;
+    }
+  } else {
+    PyErr_SetString(PyExc_TypeError, "Input is not a list.");
+    return NULL;
+  }
+}
 
 /* WRAP PUBLIC STRUCTURES AND GENERATE GETTERS */
 %immutable;

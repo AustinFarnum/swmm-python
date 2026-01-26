@@ -18,6 +18,7 @@
 %rename (SubcatchStats)                     SM_SubcatchStats;
 %rename (RoutingTotals)                     SM_RoutingTotals;
 %rename (RunoffTotals)                      SM_RunoffTotals;
+%rename (GWState)                           SM_GWaterState;
 
 
 // RENAME CANONICAL API AS NECESSARY
@@ -81,6 +82,9 @@
 %rename(subcatch_get_result)                swmm_getSubcatchResult;
 %rename(subcatch_get_pollutant)             swmm_getSubcatchPollut;
 %rename(subcatch_get_stats)                 swmm_getSubcatchStats;
+
+%rename(gw_get_state)                       swmm_getGWaterState;
+%rename(gw_set_state)                       swmm_setGWaterState;
 
 
 %rename(system_get_routing_totals)          swmm_getSystemRoutingTotals;
